@@ -11,7 +11,7 @@ jobs:
               run: echo "::error title=My Error Title,file=app.js,"\
                    "line=27,endLine=30,column=40,endColumn=50::My Error Message with params"
             - name: Echo a notice message
-              run: echo "::notice title:My Notice Title,file=myfile.java::My Notice Message with params"
+              run: echo "::notice title=My Notice Title,file=myfile.java::My Notice Message with params"
             - name: Echo a group message
               run: |
                 echo "::group::My group title"
