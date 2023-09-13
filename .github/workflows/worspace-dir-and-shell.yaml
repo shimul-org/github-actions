@@ -16,7 +16,8 @@ jobs:
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
-
+          echo $GITHUB_ACTOR
+          echo "Token: ${{ secrets.GITHUB_TOKEN }}"
       - name: Change working directory
         working-directory: /home/runner
         run: pwd
