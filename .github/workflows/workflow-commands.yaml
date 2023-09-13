@@ -1,0 +1,26 @@
+name: Workflow Commands
+on: [push]
+
+jobs:
+    run-workflow-commands:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo an error message
+              run: echo "::error::This is an error message"
+            - name: Echo an error message with params
+              run: echo "::error title=My Error Title,file=app.js,"\
+                   "line=27,endLine=30,column=40,endColumn=50::My Error Message with params"
+            - name: Echo a notice message
+              run: echo "::notice title:My Notice Title,file=myfile.java::My Notice Message with params"
+            - name: Echo a group message
+              run: |
+                echo "::group::My group title"
+                echo "Inside Group - Message One"
+                echo "Inside Group - Message Two"
+                echo "::endgroup"
+            - name: Setting a secret message
+              run: echo "::add-mask::Account Number"
+            - name: Echoing the secret value
+              run: |
+                echo -n "This is my secret value: "
+                echo "Account Number"
