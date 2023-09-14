@@ -6,7 +6,7 @@ env:
 
 jobs:
   env_and_context_vars:
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
     env:
       JOB_LEVEL_ENV_VAR: Job level env variable
     steps:
