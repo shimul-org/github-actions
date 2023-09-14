@@ -26,5 +26,5 @@ jobs:
             - run: |
                 echo $GITHUB_REF
                 echo "String: ${{ inputs.string }}"
-                echo "String: ${{ inputs.options }}"
-                echo "String: ${{ inputs.environment }}"                          
+                echo "Option: ${{ inputs.options }}"
+                echo "Environment: ${{ inputs.environment }}"                          
