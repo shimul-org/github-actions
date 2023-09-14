@@ -1,0 +1,34 @@
+name: Environment && Context Variables
+on: [push]
+
+env:
+  WF_LEVEL_ENV_VAR: Workflow level env variable
+
+jobs:
+  env_and_context_vars:
+    runs-on: ubuntu-lates
+    env:
+      JOB_LEVEL_ENV_VAR: Job level env variable
+    steps:
+      - name: Log ENV VAR
+        env:
+          STEP_LEVEL_ENV_VAR: Step level env variable
+          WF_LEVEL_ENV_VAR: Overridden at step level
+        run: |
+          echo $WF_LEVEL_ENV_VAR
+          echo '${{ env.WF_LEVEL_ENV_VAR }}'
+          echo $JOB_LEVEL_ENV_VAR
+          echo $STEP_LEVEL_ENV_VAR
+      - name: Set env variable
+        run: |
+          echo "MY_ENV_VAR=Shimul Kumar Saha" >> "$GITHUB_ENV"
+          DELIMETER=1234
+          echo "RANDOM_JOKE<<$DELIMETER" >> "$GITHUB_ENV
+          echo "Here is the joke:" >> "$GITHUB_ENV
+          curl -s -w "\n" https://icanhazdadjoke.com/ >> "$GITHUB_ENV
+          echo "$DELIMETER" >> "$GITHUB_ENV
+      - name: Log Dynamic ENV VAR
+        run: |
+          echo "$MY_ENV_VAR"
+          echo $RANDOM_JOKE    
+
