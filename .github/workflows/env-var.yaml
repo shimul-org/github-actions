@@ -23,10 +23,10 @@ jobs:
         run: |
           echo "MY_ENV_VAR=Shimul Kumar Saha" >> "$GITHUB_ENV"
           DELIMETER=1234
-          echo "RANDOM_JOKE<<$DELIMETER" >> "$GITHUB_ENV
-          echo "Here is the joke:" >> "$GITHUB_ENV
-          curl -s -w "\n" https://icanhazdadjoke.com/ >> "$GITHUB_ENV
-          echo "$DELIMETER" >> "$GITHUB_ENV
+          echo "RANDOM_JOKE<<$DELIMETER" >> "$GITHUB_ENV"
+          echo "Here is the joke:" >> "$GITHUB_ENV"
+          curl -s -w "\n" https://icanhazdadjoke.com/ >> "$GITHUB_ENV"
+          echo "$DELIMETER" >> "$GITHUB_ENV"
       - name: Log Dynamic ENV VAR
         run: |
           echo "$MY_ENV_VAR"
