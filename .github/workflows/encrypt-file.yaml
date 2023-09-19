@@ -14,4 +14,4 @@ jobs:
           gpg --quiet --batch --yes --decrypt --passphrase "$PASSPHRASE" \
             --out "$HOME/secrets/decrypted.json" secret.json.gpg 
       - name: Show the decrypted file
-        run: echo "$HOME/secrets/decrypted.json"      
+        run: cat "$HOME/secrets/decrypted.json"      
