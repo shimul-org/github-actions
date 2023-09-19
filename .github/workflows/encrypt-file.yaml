@@ -1,0 +1,17 @@
+name: Encrypt and decrypt file
+on: [push]
+
+jobs:
+  decrypt-file:
+    runs-on: ${{ vars.JOB_RUNNER }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Decrypt file
+        env:
+          PASSPHRASE: ${{ env.PASSPHRASE }}
+        run: |
+          mkdir $HOME/secrets
+          gpg --quiet --batch --yes --decrypt --passpharse "$PASSPHRASE" \
+            --out "$HOME/secrets/decrypted.json" secret.json.gpg 
+      - name: Show the decrypted file
+        run: echo "$HOME/secrets/decrypted.json"      
