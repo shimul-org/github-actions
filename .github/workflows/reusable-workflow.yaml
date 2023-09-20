@@ -1,0 +1,37 @@
+name: Reusable Workflow
+on: 
+  workflow_call:
+    inputs:
+      name:
+        description: Name of the person
+        type: string
+        required: true
+        default: 'Shimul'
+    secrets:
+      access_token:
+        description: Access Token
+        required: true
+    outputs:
+      date:
+        description: Current Date
+        value: ${{ jobs.generate-output.outputs.date }}
+
+jobs:
+  generate-output:
+    runs-on: ubuntu-latest
+    outputs:
+      date: ${{ steps.date-step.outputs.date }}
+    steps:
+      - run: echo "date=$(date)" >> $GITHUB_OUTPUT
+        id: date-step        
+  log-context-and-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ls -a
+      - run: echo '${{ toJson(github) }}'
+        name: Display Github context
+      - name: Display inputs
+        run: echo '${{ inputs.name }}'
+      - name: Display Secrets
+        run: echo '${{ secrets.access_token }}'  
