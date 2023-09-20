@@ -6,7 +6,7 @@ on:
         description: Choose Operating System
         default: "windows-latest,ubuntu-latest"
         type: string
-      node-version:
+      node_version:
         description: Choose Node Version
         default: "14,15,16"
         type: string 
@@ -22,7 +22,7 @@ jobs:
         with:
           script: "return { 
                             os: context.payload.inputs.os.split(','), 
-                            'node-version': context.payload.inputs.node-version.split(',')
+                            'node-version': context.payload.inputs.node_version.split(',')
                           }"
           result-encoding: json  
       - name: Script output
