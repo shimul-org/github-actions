@@ -22,7 +22,7 @@ jobs:
         with:
           script: "return { 
                             os: context.payload.inputs.os.split(','), 
-                            'node-version': context.payload.inputs['node-version'].split(',')
+                            'node-version': context.payload.inputs.node-version.split(',')
                           }"
           result-encoding: json  
       - name: Script output
