@@ -38,7 +38,7 @@ runs:
         path: joke.txt
     - name: Send a slack message
       uses: "docker://technosophos/slack-notify"      
-      with:
+      env:
         SLACK_WEBHOOK: ${{ inputs.slack_webhook }}
         SLACK_TITLE: Random Joke
         SLACK_MESSAGE: "${{ inputs.slack_username && format('{0}{1}{2}', '@', inputs.slack_username, steps.joke.outputs.random_joke) || steps.joke.outputs.random_joke }}"
