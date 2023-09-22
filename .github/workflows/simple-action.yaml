@@ -8,6 +8,7 @@ on:
 
 jobs:
   slack-message:
+    name: Send a Joke to Slack Using Custom Composite Action
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
