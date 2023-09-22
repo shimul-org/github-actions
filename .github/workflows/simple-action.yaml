@@ -1,0 +1,22 @@
+name: Simple Composite Action Workflow
+on: 
+  workflow_dispatch:
+    inputs:
+      slack_username:
+        description: Slack Username
+        type: string
+
+jobs:
+  slack-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3  
+      - uses: ./.github/actions/slack-joke
+        id: slack-joke
+        with:
+          slack_username: ${{ inputs.slack_username }}
+          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+          upload_joke: true
+      - name: Display Joke
+        run: echo "${{ steps.slack-joke.outputs.joke }}"     
