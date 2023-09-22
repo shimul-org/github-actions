@@ -25,7 +25,7 @@ runs:
         echo "random_joke<<$DELIMETER" >> $GITHUB_OUTPUT
         echo "A random joke: " >> $GITHUB_OUTPUT
         curl -s -w "\n" https://icanhazdadjoke.com/ >> $GITHUB_OUTPUT
-        echo "$DELIMETER" >> $GITHUB_OUTUPT
+        echo "$DELIMETER" >> $GITHUB_OUTPUT
     - name: Generate Joke File
       if: inputs.upload_joke
       shell: bash
