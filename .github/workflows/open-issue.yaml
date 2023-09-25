@@ -1,0 +1,28 @@
+name: Open an Issue
+on: 
+  workflow_dispatch:
+    inputs:
+      title:
+        description: Issue Title
+        type: string
+        required: true
+      body:
+        description: Issue Body
+        type: string
+        required: true
+
+jobs:
+  open-issue:
+    name: Open an Issue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3  
+      - uses: shimul-org/create-issue-action@main
+        id: open-issue
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: ${{ inputs.title }}
+          body: ${{ inputs.body }}
+      - name: Display Issue
+        run: echo "${{ steps.open-issue.outputs.issue }}"     
